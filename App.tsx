@@ -63,7 +63,7 @@ const onboardingData = [
     title: 'Export & Share',
     description: 'Export your survey data in GeoJSON, KML formats and share instantly',
     icon: 'share',
-    image: require('./src/assests/images/onboard3.png'),
+    image: require('./src/assests/images/onboard1.png'),
     features: ['GeoJSON Export', 'KML Export', 'Share Data'],
   },
 ];
@@ -136,7 +136,7 @@ const OnboardingScreen = ({ onComplete }) => {
   };
 
   return (
-    <SafeAreaView style={styles.onboardingContainer}>
+    <View style={styles.onboardingContainer}>
       <TouchableOpacity style={styles.skipButton} onPress={handleSkip}>
         <Text style={styles.skipButtonText}>Skip</Text>
       </TouchableOpacity>
@@ -168,7 +168,7 @@ const OnboardingScreen = ({ onComplete }) => {
           </Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -444,7 +444,7 @@ export default function App() {
   const mapRef = useRef<MapView>(null);
 
   useEffect(() => {
-    checkOnboardingStatus();
+    // Don't check onboarding status - always show onboarding
     loadSavedPoints();
     requestLocationPermission();
   }, []);
@@ -456,17 +456,6 @@ export default function App() {
       }
     };
   }, [locationSubscription]);
-
-  const checkOnboardingStatus = async () => {
-    try {
-      const onboardingShown = await AsyncStorage.getItem('onboarding_shown');
-      if (onboardingShown === 'true') {
-        setShowOnboarding(false);
-      }
-    } catch (error) {
-      console.error('Error checking onboarding status:', error);
-    }
-  };
 
   const completeOnboarding = async () => {
     try {
@@ -879,7 +868,7 @@ export default function App() {
     return <SplashScreenComponent onComplete={() => setShowSplash(false)} />;
   }
 
-  // Show Onboarding
+  // Show Onboarding - Always show first
   if (showOnboarding) {
     return <OnboardingScreen onComplete={completeOnboarding} />;
   }
