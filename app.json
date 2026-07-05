@@ -4,10 +4,10 @@
     "slug": "gct-survey",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#f6f4ee"
     },
@@ -23,7 +23,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#f6f4ee"
       },
       "permissions": [
@@ -31,10 +31,19 @@
         "ACCESS_COARSE_LOCATION",
         "READ_EXTERNAL_STORAGE",
         "WRITE_EXTERNAL_STORAGE"
-      ]
+      ],
+      "package": "com.sanjayappi.gctsurvey"
     },
     "web": {
-      "favicon": "./assets/images/favicon.png"
-    }
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "eb2c63fc-ec22-4a74-b5ed-cc0796562aa6"
+      }
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }
